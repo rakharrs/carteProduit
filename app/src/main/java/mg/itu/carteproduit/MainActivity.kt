@@ -77,13 +77,18 @@ fun ProduitCard(produit: Produit) {
     //              MaterialTheme.colorScheme.primaryContainer
     //          else MaterialTheme.colorScheme.surfaceVariant
     //      )
+    var selectionnee by remember { mutableStateOf(false) }
     var quantite by remember { mutableStateOf(0) }
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(16.dp),
+            .padding(16.dp)
+            .clickable{selectionnee = !selectionnee},
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant
+//            containerColor = MaterialTheme.colorScheme.surfaceVariant
+            containerColor = if (selectionnee)
+                MaterialTheme.colorScheme.primaryContainer
+            else MaterialTheme.colorScheme.surfaceVariant
         ),
     ) {
         Column(Modifier.padding(16.dp)) {
